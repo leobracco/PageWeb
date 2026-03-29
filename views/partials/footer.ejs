@@ -1,0 +1,43 @@
+<footer class="bg-dark" id="tempaltemo_footer">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Agro Parallel</h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li><i class="fas fa-map-marker-alt fa-fw"></i> San Antonio de Areco, BS AS</li>
+          <li><i class="fa fa-phone fa-fw"></i> <a class="text-decoration-none text-light" href="tel:+54-2326-403502">+54-2326-403502</a></li>
+          <li><i class="fa fa-envelope fa-fw"></i> <a class="text-decoration-none text-light" href="mailto:info@agroparallel.com">info@agroparallel.com</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-light border-bottom pb-3 border-light">Soluciones</h2>
+        <div class="row">
+          <% if (typeof productosMenu !== 'undefined') { 
+             const categorias = [...new Set(productosMenu.map(p => p.Categoria))]; 
+             categorias.forEach(cat => { %>
+              <div class="col-12 mb-2">
+                <h6 class="text-success mt-2"><%= cat %></h6>
+                <ul class="list-unstyled text-light footer-link-list">
+                  <% productosMenu.filter(p => p.Categoria === cat).forEach(prod => { %>
+                    <li><a class="text-decoration-none text-muted" href="/producto/<%= prod.id %>"><%= prod.Nombre %></a></li>
+                  <% }) %>
+                </ul>
+              </div>
+          <% })} %>
+        </div>
+      </div>
+
+      <div class="col-md-4 pt-5">
+        <h2 class="h2 text-light border-bottom pb-3 border-light">Explorar</h2>
+        <ul class="list-unstyled text-light footer-link-list">
+          <li><a class="text-decoration-none" href="/">Inicio</a></li>
+          <li><a class="text-decoration-none" href="/nosotros">Sobre nosotros</a></li>
+          <li><a class="text-decoration-none" href="/productos">Catálogo de Productos</a></li>
+          <li><a class="text-decoration-none" href="/servicios">Servicios Técnicos</a></li>
+          <li><a class="text-decoration-none" href="/contacto">Contactenos</a></li>
+        </ul>
+      </div>
+    </div>
+    </div>
+</footer>

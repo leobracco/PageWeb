@@ -1,0 +1,126 @@
+<!-- Start Content Page -->
+<div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Contactanos</h1>
+        <p>
+            Estamos aquí para ayudarte. Si tenés alguna consulta sobre nuestros productos o servicios, no dudes en
+            contactarnos. ¡Trabajemos juntos para potenciar tu campo!
+        </p>
+    </div>
+</div>
+
+<!-- Start Contact -->
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc-gwYrAAAAAGMLHO4PORGjoOWN46GwCM8FhtVq"></script>
+
+<div class="container py-5">
+    <div class="row py-5">
+        <!-- Formulario -->
+        <form id="contactForm" class="col-md-9 m-auto">
+            <div class="row">
+                <!-- Campo: Nombre -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" class="form-control mt-1" id="inputName" name="name" placeholder="Tu Nombre"
+                        required />
+                </div>
+                <!-- Campo: Celular -->
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputCelular">Celular</label>
+                    <input type="tel" class="form-control mt-1" id="inputCelular" name="celular"
+                        placeholder="Tu Celular" required pattern="[0-9]{10}" />
+                </div>
+            </div>
+            <!-- Campo: Asunto -->
+            <div class="mb-3">
+                <label for="inputSubject">Asunto</label>
+                <input type="text" class="form-control mt-1" id="inputSubject" name="subject"
+                    placeholder="Asunto de tu consulta" required />
+            </div>
+            <!-- Campo: Mensaje -->
+            <div class="mb-3">
+                <label for="inputMessage">Mensaje</label>
+                <textarea class="form-control mt-1" id="inputMessage" name="message"
+                    placeholder="Dejanos tu mensaje aquí" rows="8" required></textarea>
+            </div>
+            <!-- Botón de Envío -->
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="button" id="buttonConsulta" class="btn btn-success btn-lg px-3">
+                        Enviar Consulta
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">Estado del Envío</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBodyMessage">
+                <!-- Mensaje dinámico -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- Google reCAPTCHA Script -->
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc-gwYrAAAAAGMLHO4PORGjoOWN46GwCM8FhtVq"></script>
+
+<script>
+    $(document).ready(function () {
+        $("#buttonConsulta").on("click",  function (event) {
+        event.preventDefault(); // Evitar recargar la página
+  
+        const formData = {
+          name: $("#inputName").val(),
+          celular: $("#inputCelular").val(),
+          subject: $("#inputSubject").val(),
+          message: $("#inputMessage").val(),
+        };
+  
+        // Ejecutar reCAPTCHA v3 antes de enviar los datos
+        grecaptcha.ready(function () {
+          grecaptcha.execute("6Lc-gwYrAAAAAGMLHO4PORGjoOWN46GwCM8FhtVq", { action: "submit" }).then(function (token) {
+            // Agregar el token de reCAPTCHA al formulario
+            formData["g-recaptcha-response"] = token;
+  
+            // Enviar los datos al servidor
+            $.ajax({
+              type: "POST",
+              url: "/enviar-mensaje",
+              data: formData,
+              success: function (response) {
+                // Mostrar el modal con éxito
+                $("#modalBodyMessage").text("¡Mensaje enviado con éxito!");
+                $("#responseModal").modal("show");
+              },
+              error: function (xhr) {
+                // Mostrar el modal con error
+                const errorMessage =
+                  xhr.status === 400
+                    ? "Por favor, revisá los datos ingresados. El número de celular es incorrecto o faltan datos."
+                    : "Hubo un error al enviar el mensaje. Intentá nuevamente.";
+                $("#modalBodyMessage").text(errorMessage);
+                $("#responseModal").modal("show");
+              },
+            });
+          });
+        });
+      });
+    });
+  </script>
+  

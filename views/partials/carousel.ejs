@@ -1,0 +1,65 @@
+<div id="template-mo-zay-hero-carousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
+    <ol class="carousel-indicators">
+        <% slides.forEach((slide, index) => { %>
+            <li data-bs-target="#template-mo-zay-hero-carousel" 
+                data-bs-slide-to="<%= index %>" 
+                class="<%= index === 0 ? 'active' : '' %>"></li>
+        <% }); %>
+    </ol>
+    
+    <div class="carousel-inner bg-light">
+        <% slides.forEach((slide, index) => { %>
+            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+                <div class="container">
+                    <div class="row p-5 align-items-center">
+                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last text-center">
+                            <picture>
+                                <source srcset="/<%= slide.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
+                                <img class="img-fluid rounded" 
+                                     src="/<%= slide.Imagen %>" 
+                                     alt="Tecnología AgTech Agro Parallel: <%= slide.Nombre %>"
+                                     <% if (index === 0) { %> 
+                                        fetchpriority="high" loading="eager" 
+                                     <% } else { %> 
+                                        loading="lazy" 
+                                     <% } %>
+                                     width="800"
+                                     height="600" />
+                            </picture>
+                        </div>
+                        
+                        <div class="col-lg-6 mb-0 d-flex align-items-center">
+                            <div class="text-align-left">
+                                <% if (index === 0) { %>
+                                    <h1 class="h1 text-success fw-bold"><b><%= slide.Nombre %></b></h1>
+                                <% } else { %>
+                                    <h2 class="h1 text-success fw-bold"><b><%= slide.Nombre %></b></h2>
+                                <% } %>
+                                <h3 class="h2 text-dark"><%= slide.Categoria %></h3>
+                                <p class="lh-lg text-secondary">
+                                    <%= slide.DescripcionCorta %>
+                                </p>
+                                <div class="mt-4">
+                                    <a href="/producto/<%= slide.id %>" class="btn btn-success btn-lg px-4 shadow">
+                                        Ver Detalles del Equipo
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% }); %>
+    </div>
+
+    <button class="carousel-control-prev text-decoration-none w-auto ps-3 border-0 bg-transparent" 
+            type="button" data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide="prev">
+        <i class="fas fa-chevron-left text-success h1"></i>
+        <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next text-decoration-none w-auto pe-3 border-0 bg-transparent" 
+            type="button" data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide="next">
+        <i class="fas fa-chevron-right text-success h1"></i>
+        <span class="visually-hidden">Siguiente</span>
+    </button>
+</div>

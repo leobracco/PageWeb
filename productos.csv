@@ -1,0 +1,7 @@
+Nombre;Categoria;Tags;DescripcionCorta;DescripcionLarga;Imagen;Precio;Carousel
+AGP-AU-LIBRE;Piloto Automático;"Señal Libre";" Precisión de 15 cm";"Piloto automático eléctrico con señal libre y fácil instalación.";assets/img/agp_au_libre.jpg;7920 + IVA;true
+AGP-AU-RTK;Piloto Automático;RTK;"Precisión de 2 cm";"Piloto automático con señal RTK para precisión centimétrica.";assets/img/agp_au_rtk.jpg;8.920 + IVA;true
+AGP-RTK;Base RTK;Corrección;"Base RTK para precisión";"Base de corrección RTK para optimizar operaciones agrícolas.";assets/img/agp_rtk.png;2530 + IVA;true
+AGP-SXS;Control de Siembra;"Surco por Surco, Sembradoras Neumáticas";"Corte Surco por Surco";"Sistema de corte surco por surco diseñado para sembradoras neumáticas, optimizando el uso de semillas y mejorando la precisión en la siembra.";assets/img/agp_sxs.png;Consultar;true
+AGP-CS;Control de Siembra;"Corte por Sección, Optimización de Siembra";"Corte por Sección";"Sistema de corte por sección para sembradoras, permitiendo ahorrar insumos y lograr mayor eficiencia en el control de la siembra.";assets/img/agp_cs.png;Consultar;true
+AGP-VR;Dosis Variable;"Dosis Variable, Agricultura de Precisión";"Aplicación de Dosis Variable";"Sistema de control de dosis variable diseñado para la aplicación precisa de insumos agrícolas, permitiendo ajustar la cantidad en tiempo real y mejorar la eficiencia en el uso de recursos.";assets/img/agp_vr.png;Consultar;true

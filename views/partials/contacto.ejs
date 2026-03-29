@@ -1,0 +1,114 @@
+<div class="container-fluid bg-light py-5">
+    <div class="col-md-6 m-auto text-center">
+        <h1 class="h1">Contactanos</h1>
+        <p>
+            Estamos aquí para ayudarte. Si tenés alguna consulta sobre nuestros productos o servicios, no dudes en
+            contactarnos. ¡Trabajemos juntos para potenciar tu campo!
+        </p>
+    </div>
+</div>
+
+<div class="container py-5">
+    <div class="row py-5">
+        <form id="contactForm" class="col-md-9 m-auto">
+            <div class="row">
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputName">Nombre</label>
+                    <input type="text" class="form-control mt-1" id="inputName" name="name" placeholder="Tu Nombre" required />
+                </div>
+                <div class="form-group col-md-6 mb-3">
+                    <label for="inputCelular">Celular</label>
+                    <input type="tel" class="form-control mt-1" id="inputCelular" name="celular" placeholder="Tu Celular" required pattern="[0-9]{10}" />
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="inputSubject">Asunto</label>
+                <input type="text" class="form-control mt-1" id="inputSubject" name="subject" placeholder="Asunto de tu consulta" required />
+            </div>
+            <div class="mb-3">
+                <label for="inputMessage">Mensaje</label>
+                <textarea class="form-control mt-1" id="inputMessage" name="message" placeholder="Dejanos tu mensaje aquí" rows="8" required></textarea>
+            </div>
+            <div class="row">
+                <div class="col text-end mt-2">
+                    <button type="submit" id="buttonConsulta" class="btn btn-success btn-lg px-3">
+                        Enviar Consulta
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade" id="responseModal" tabindex="-1" role="dialog" aria-labelledby="responseModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="responseModalLabel">Estado del Envío</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBodyMessage">
+                </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lc-gwYrAAAAAGMLHO4PORGjoOWN46GwCM8FhtVq"></script>
+
+<script>
+    $(document).ready(function () {
+        // CAMBIO 3: Escuchamos el evento 'submit' del formulario, no el click del botón
+        $("#contactForm").on("submit", function (event) {
+            event.preventDefault(); // Frenamos el envío tradicional
+
+            // El navegador ya validó los campos "required" porque usamos type="submit"
+            // Ahora procedemos con reCAPTCHA
+
+            // Deshabilitar botón para evitar doble click
+            const btn = $("#buttonConsulta");
+            btn.prop('disabled', true).text('Enviando...');
+
+            const formData = {
+                name: $("#inputName").val(),
+                celular: $("#inputCelular").val(),
+                subject: $("#inputSubject").val(),
+                message: $("#inputMessage").val(),
+            };
+
+            grecaptcha.ready(function () {
+                grecaptcha.execute("6Lc-gwYrAAAAAGMLHO4PORGjoOWN46GwCM8FhtVq", { action: "submit" })
+                .then(function (token) {
+                    
+                    formData["g-recaptcha-response"] = token;
+
+                    $.ajax({
+                        type: "POST",
+                        url: "/enviar-mensaje",
+                        data: formData,
+                        success: function (response) {
+                            $("#modalBodyMessage").text("¡Mensaje enviado con éxito! Nos pondremos en contacto pronto.");
+                            $("#responseModal").modal("show");
+                            $("#contactForm")[0].reset(); // Limpiar formulario
+                        },
+                        error: function (xhr) {
+                            const errorMessage = xhr.status === 400
+                                ? "Por favor, revisá los datos. Verificá tu celular y campos obligatorios."
+                                : "Hubo un error en el servidor. Intentá nuevamente más tarde.";
+                            
+                            $("#modalBodyMessage").text(errorMessage);
+                            $("#responseModal").modal("show");
+                        },
+                        complete: function() {
+                            // Reactivar botón pase lo que pase
+                            btn.prop('disabled', false).text('Enviar Consulta');
+                        }
+                    });
+                });
+            });
+        });
+    });
+</script>  

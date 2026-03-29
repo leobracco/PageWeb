@@ -1,0 +1,59 @@
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-left p-2 pb-3">
+            <h3 class="h3 text-success fw-bold">También te puede interesar</h3>
+        </div>
+
+        <div class="row">
+            <% 
+                /* Lógica para obtener relacionados excluyendo el actual */
+                let relacionados = [];
+                if (typeof productosMenu !== 'undefined' && typeof producto !== 'undefined') {
+                    // Filtramos para no mostrar el mismo producto que ya estamos viendo
+                    relacionados = productosMenu.filter(p => p.id !== producto.id);
+                    // Opcional: Mezclar el array para que sean aleatorios
+                    relacionados = relacionados.sort(() => 0.5 - Math.random());
+                }
+            %>
+            
+            <% if (relacionados.length > 0) { %>
+                <% relacionados.slice(0, 4).forEach(prod => { %>
+                    <div class="col-12 col-md-4 col-lg-3 mb-4">
+                        <div class="card h-100 border-0 shadow-sm product-card">
+                            <div class="card-img-wrap position-relative overflow-hidden">
+                                <a href="/producto/<%= prod.id %>">
+                                    <picture>
+                                        <source srcset="/<%= prod.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
+                                        <img src="/<%= prod.Imagen %>" 
+                                             class="card-img-top img-fluid" 
+                                             alt="Foto de <%= prod.Nombre %>"
+                                             loading="lazy"
+                                             width="400" height="400"
+                                             style="object-fit: cover; aspect-ratio: 1/1;">
+                                    </picture>
+                                </a>
+                            </div>
+                            <div class="card-body text-center d-flex flex-column">
+                                <a href="/producto/<%= prod.id %>" class="h5 text-decoration-none text-dark fw-bold mb-2">
+                                    <%= prod.Nombre %>
+                                </a>
+                                <p class="text-muted small mb-2"><%= prod.Categoria %></p>
+                                <a href="/producto/<%= prod.id %>" class="btn btn-outline-success btn-sm mt-auto rounded-pill">
+                                    Ver Más
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="text-muted">No hay productos relacionados disponibles.</p>
+            <% } %>
+        </div>
+    </div>
+</section>
+
+<style>
+    /* Efecto suave al pasar el mouse */
+    .product-card { transition: transform 0.3s ease; }
+    .product-card:hover { transform: translateY(-5px); }
+</style>

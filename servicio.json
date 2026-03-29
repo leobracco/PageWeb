@@ -1,0 +1,8 @@
+{
+  "apps" : [{
+    "name"  : "PaginaAGP-V2.0",
+    "script"    : "npm start",
+    "watch"    : true,
+    "exec_mode" : "fork" 
+  }]
+}

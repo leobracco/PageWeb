@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Ups! Campo equivocado | Agro Parallel</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+
+    <style>
+        /* Estilos específicos para la página de error */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .error-bg {
+            /* Ocupa toda la pantalla */
+            height: 100%;
+            /* Flexbox para centrar el contenido */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            padding: 20px;
+
+            /* CAPA OSCURA + IMAGEN DE FONDO */
+            /* Reemplaza la ruta si tu imagen está en otro lado */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/assets/img/404.webp');
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed; /* Efecto parallax simple */
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #dc3545; /* Rojo Bootstrap */
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .error-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* Sombra para que el botón resalte sobre el fondo oscuro */
+        .btn-glow {
+             box-shadow: 0 0 15px rgba(40, 167, 69, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid error-bg">
+        <div>
+            <h1 class="error-code">404</h1>
+            <h2 class="error-title">¡Se nos perdió el rumbo!</h2>
+            <p class="error-text">
+                Parece que este tractor no tenía el <b>Piloto Automático Centrix</b> activado y se desvió del camino. <br>
+                La página que buscas no existe o fue movida.
+            </p>
+            
+            <a href="/" class="btn btn-success btn-lg py-3 px-5 rounded-pill fw-bold btn-glow">
+                <i class="fas fa-home me-2"></i> Volver al Camino Correcto (Inicio)
+            </a>
+        </div>
+    </div>
+
+</body>
+</html>

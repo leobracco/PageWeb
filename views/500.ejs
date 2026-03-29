@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error 500 | Falla Mecánica - Agro Parallel</title>
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/fontawesome.min.css">
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .error-bg {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            text-align: center;
+            color: white;
+            padding: 20px;
+            
+            /* FONDO OSCURO + IMAGEN DE MOTOR ROTO */
+            /* Asegúrate de guardar la imagen generada como 500-engine.jpg en tu carpeta public/assets/img/ */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.8)), url('/assets/img/500.webp');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #ffc107; /* Amarillo de Advertencia/Precaución */
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.8);
+        }
+
+        .error-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .error-text {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+            color: #ddd;
+        }
+
+        .btn-action {
+            font-weight: bold;
+            border-radius: 50px;
+            padding: 12px 30px;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        
+        .btn-action:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container-fluid error-bg">
+        <div>
+            <h1 class="error-code">500</h1>
+            <h2 class="error-title">¡Problemas bajo el capó!</h2>
+            <p class="error-text">
+                Tuvimos una falla interna en el motor del servidor. <br>
+                Nuestros ingenieros ya están con las herramientas intentando repararlo.
+            </p>
+            
+            <button onclick="location.reload()" class="btn btn-warning btn-lg btn-action shadow">
+                <i class="fas fa-sync-alt me-2"></i> Intentar Arrancar de Nuevo
+            </button>
+
+            <a href="https://wa.me/5492326403502?text=Hola%2C%20la%20web%20me%20dio%20error%20500" class="btn btn-outline-light btn-lg btn-action">
+                <i class="fab fa-whatsapp me-2"></i> Reportar Falla
+            </a>
+            
+            <div class="mt-4">
+                <a href="/" class="text-white text-decoration-none small opacity-75">
+                    <i class="fas fa-arrow-left"></i> Volver al Inicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
