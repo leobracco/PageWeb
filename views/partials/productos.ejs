@@ -1,63 +1,78 @@
-<div class="container py-5">
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="card border-0 shadow-sm rounded-3 mb-4">
-                <div class="card-body p-4">
-                    <h5 class="fw-bold text-success mb-3">Filtrar Soluciones</h5>
-                    <div class="list-group list-group-flush">
-                        <a href="/productos" 
-                           class="list-group-item list-group-item-action border-0 px-0 <%= !categoriaSeleccionada ? 'text-success fw-bold' : '' %>">
-                           <i class="fas fa-th-large me-2"></i> Todas
-                        </a>
-                        <% 
-                            const categorias = [...new Set(productos.map(p => p.Categoria))];
-                            categorias.forEach(cat => { 
-                        %>
-                        <a href="/productos?categoria=<%= encodeURIComponent(cat) %>" 
-                           class="list-group-item list-group-item-action border-0 px-0 <%= categoriaSeleccionada === cat ? 'text-success fw-bold' : '' %>">
-                           <i class="fas fa-chevron-right me-2 small"></i> <%= cat %>
-                        </a>
-                        <% }); %>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="agp-section" style="padding-top:48px">
 
-        <div class="col-lg-9">
-            <div class="row g-4">
-                <% 
-                    const productosFiltrados = categoriaSeleccionada 
-                        ? productos.filter(p => p.Categoria === categoriaSeleccionada) 
-                        : productos;
+  <div class="row g-4">
 
-                    productosFiltrados.forEach(producto => { 
-                %>
-                <div class="col-md-6 col-xl-4">
-                    <div class="card h-100 border-0 shadow-sm product-card">
-                        <div class="position-relative">
-                            <img src="/<%= producto.Imagen %>" class="card-img-top p-3" alt="<%= producto.Nombre %>">
-                            <div class="product-badge bg-success text-white px-3 py-1 rounded-pill position-absolute">
-                                <%= producto.Categoria %>
-                            </div>
-                        </div>
-                        <div class="card-body p-4 pt-0 text-center">
-                            <h5 class="card-title fw-bold mb-1"><%= producto.Nombre %></h5>
-                            <p class="text-success fw-bold mb-3"><%= producto.Precio %></p>
-                            <a href="/producto/<%= producto.id %>" class="btn btn-outline-success rounded-pill px-4">
-                                Ver Detalles
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <% }); %>
-            </div>
-        </div>
+    <!-- Sidebar filtros -->
+    <div class="col-lg-2 mb-2">
+      <div class="filter-sidebar">
+        <h5>Categorías</h5>
+        <a href="/productos" class="filter-pill <%= !categoriaSeleccionada ? 'active' : '' %>">
+          Todas
+        </a>
+        <%
+          const categorias = [...new Set(productos.map(p => p.Categoria))];
+          categorias.forEach(cat => {
+        %>
+        <a href="/productos?categoria=<%= encodeURIComponent(cat) %>"
+           class="filter-pill <%= categoriaSeleccionada === cat ? 'active' : '' %>">
+          <%= cat %>
+        </a>
+        <% }); %>
+      </div>
     </div>
-</div>
 
-<style>
-    .product-card { transition: all 0.3s ease; border-radius: 15px !important; }
-    .product-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important; }
-    .product-badge { top: 15px; left: 15px; font-size: 0.75rem; font-weight: 600; }
-    .list-group-item-action:hover { background: transparent; color: #198754; padding-left: 5px; transition: 0.2s; }
-</style>
+    <!-- Grid -->
+    <div class="col-lg-10">
+      <%
+        const productosFiltrados = categoriaSeleccionada
+          ? productos.filter(p => p.Categoria === categoriaSeleccionada)
+          : productos;
+      %>
+      <% if (productosFiltrados.length === 0) { %>
+        <p style="color:var(--muted);padding:48px 0;text-align:center">No hay productos en esta categoría.</p>
+      <% } else { %>
+        <div class="agp-products-grid">
+          <% productosFiltrados.forEach(producto => { %>
+            <article class="agp-product-card">
+              <!-- Imagen -->
+              <div class="card-img">
+                <% if (producto.Emoji) { %>
+                  <span class="card-emoji" aria-hidden="true"><%= producto.Emoji %></span>
+                <% } %>
+                <img src="/<%= producto.Imagen %>"
+                     alt="<%= producto.Nombre %> — <%= producto.Categoria %> | Agro Parallel"
+                     loading="lazy" width="400" height="300">
+              </div>
+              <!-- Body -->
+              <div class="card-body">
+                <% if (producto.Badge) { %>
+                  <span class="card-badge"><%= producto.Badge %></span>
+                <% } %>
+                <div class="card-cat"><%= producto.Categoria %></div>
+                <h3 class="card-name"><%= producto.Nombre %></h3>
+                <p class="card-desc"><%= producto.DescripcionCorta %></p>
+                <div class="card-price">
+                  <% if (producto.Precio && producto.Precio !== 'Consultar') { %>
+                    <strong>USD <%= producto.Precio %></strong>
+                  <% } else { %>
+                    <span style="color:var(--green)">Consultar precio</span>
+                  <% } %>
+                </div>
+                <% if (producto.Tags && producto.Tags.length > 0) { %>
+                  <div class="card-tags">
+                    <% producto.Tags.slice(0,2).forEach(t => { %><span class="card-tag"><%= t %></span><% }) %>
+                  </div>
+                <% } %>
+                <a href="/producto/<%= producto._id || producto.id %>"
+                   class="agp-btn agp-btn-primary"
+                   style="width:100%;text-align:center;margin-top:16px">
+                  Ver detalles →
+                </a>
+              </div>
+            </article>
+          <% }); %>
+        </div>
+      <% } %>
+    </div>
+  </div>
+</div>

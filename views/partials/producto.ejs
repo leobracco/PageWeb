@@ -3,113 +3,146 @@
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [{
-    "@type": "ListItem",
-    "position": 1,
-    "name": "Inicio",
-    "item": "https://agroparallel.com/"
+    "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://agroparallel.com/"
   },{
-    "@type": "ListItem",
-    "position": 2,
-    "name": "Productos",
-    "item": "https://agroparallel.com/productos"
+    "@type": "ListItem", "position": 2, "name": "Productos", "item": "https://agroparallel.com/productos"
   },{
-    "@type": "ListItem",
-    "position": 3,
+    "@type": "ListItem", "position": 3,
     "name": "<%= producto.Nombre %>",
-    "item": "https://agroparallel.com/producto/<%= producto.id %>"
+    "item": "https://agroparallel.com/producto/<%= producto._id || producto.id %>"
   }]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "<%= producto.Nombre %>",
+  "description": "<%= (producto.DescripcionLarga || '').replace(/"/g, '&quot;') %>",
+  "image": "https://agroparallel.com/<%= producto.Imagen %>",
+  "sku": "<%= producto._id || producto.id %>",
+  "brand": { "@type": "Brand", "name": "Agro Parallel" },
+  "category": "<%= producto.Categoria %>",
+  "url": "https://agroparallel.com/producto/<%= producto._id || producto.id %>",
+  <% if (producto.Precio && producto.Precio !== 'Consultar') { %>
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": "USD",
+    "price": "<%= producto.Precio.replace(/[^0-9.]/g, '') %>",
+    "availability": "https://schema.org/InStock",
+    "seller": { "@type": "Organization", "name": "Agro Parallel" },
+    "areaServed": "AR",
+    "url": "https://agroparallel.com/producto/<%= producto._id || producto.id %>"
+  }
+  <% } else { %>
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceSpecification": { "@type": "PriceSpecification", "description": "Consultar precio" },
+    "seller": { "@type": "Organization", "name": "Agro Parallel" },
+    "url": "https://agroparallel.com/producto/<%= producto._id || producto.id %>"
+  }
+  <% } %>
+}
+</script>
 
-<section class="bg-light py-5">
-    <div class="container">
-        <nav aria-label="breadcrumb" class="mb-4">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Inicio</a></li>
-        <li class="breadcrumb-item"><a href="/productos">Productos</a></li>
-        <li class="breadcrumb-item active" aria-current="page"><%= producto.Nombre %></li>
-    </ol>
-</nav>
+<section class="agp-section" style="padding-top:40px">
 
-        <div class="row">
-            <div class="col-lg-5 mb-4">
-                <div class="card shadow-sm border-0">
-                    <picture>
-                        <source srcset="/<%= producto.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
-                        <img src="/<%= producto.Imagen %>" 
-                             class="img-fluid rounded card-img-top" 
-                             alt="Tecnología de precisión Agro Parallel: <%= producto.Nombre %>"
-                             loading="eager" 
-                             decoding="async"
-                             width="600" 
-                             height="600">
-                    </picture>
-                </div>
-            </div>
+  <!-- Breadcrumb -->
+  <nav class="agp-breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Inicio</a> / <a href="/productos">Productos</a> / <span><%= producto.Nombre %></span>
+  </nav>
 
-            <div class="col-lg-7">
-                <div class="ps-lg-4">
-                    <h1 class="display-5 text-success fw-bold mb-2"><%= producto.Nombre %></h1>
-                    <p class="text-muted mb-4"><i class="fas fa-tag me-2"></i><%= producto.Categoria %></p>
-                    
-                    <div class="bg-white p-4 rounded shadow-sm mb-4">
-                        <p class="h3 text-dark fw-bold mb-0">U$S <%= producto.Precio %></p>
-                        <small class="text-muted">* Sujeto a condiciones comerciales</small>
-                    </div>
+  <div class="row g-5">
 
-                    <ul class="nav nav-tabs border-0" id="productTab" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active fw-bold border-0 text-success" id="desc-tab" data-bs-toggle="tab" href="#desc" role="tab">Descripción</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link fw-bold border-0 text-dark" id="specs-tab" data-bs-toggle="tab" href="#specs" role="tab">Ficha Técnica</a>
-                        </li>
-                    </ul>
-
-                    <div class="tab-content bg-white p-4 border rounded-bottom shadow-sm" id="productTabContent">
-                        <div class="tab-pane fade show active" id="desc" role="tabpanel">
-                            <div class="lh-lg text-secondary">
-                                <%= producto.DescripcionLarga %>
-                            </div>
-                        </div>
-
-                        <div class="tab-pane fade" id="specs" role="tabpanel">
-                            <div class="table-responsive">
-                                <table class="table table-hover align-middle">
-                                    <tbody>
-                                        <% if (producto.Especificaciones && Object.keys(producto.Especificaciones).length > 0) { %>
-                                            <% Object.entries(producto.Especificaciones).forEach(([key, val]) => { %>
-                                                <tr>
-                                                    <th class="text-success w-25" scope="row"><%= key %></th>
-                                                    <td class="text-secondary"><%= val %></td>
-                                                </tr>
-                                            <% }) %>
-                                        <% } else { %>
-                                            <tr>
-                                                <td class="text-center py-4 text-muted">
-                                                    Consulte especificaciones técnicas detalladas con nuestros asesores.
-                                                </td>
-                                            </tr>
-                                        <% } %>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                    <a href="https://wa.me/5492326403502?text=Hola Agro Parallel, me interesa recibir asesoramiento sobre: <%= producto.Nombre %>" 
-   onclick="return gtag_report_conversion(this.href);"
-   class="btn btn-success btn-lg py-3 shadow-lg fw-bold"
-   target="_blank"
-   rel="noopener noreferrer">
-    <i class="fab fa-whatsapp fa-lg me-2"></i> Consultar a un Especialista
-</a>
-                </div>
-            </div>
-        </div>
+    <!-- Imagen -->
+    <div class="col-lg-5">
+      <div class="product-detail-img">
+        <picture>
+          <source srcset="/<%= producto.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
+          <img src="/<%= producto.Imagen %>"
+               alt="<%= producto.Nombre %> — Agro Parallel"
+               loading="eager" decoding="async" width="600" height="600">
+        </picture>
+      </div>
     </div>
+
+    <!-- Info -->
+    <div class="col-lg-7">
+      <span class="agp-badge mb-3"><%= producto.Categoria %></span>
+      <h1 style="font-family:'Barlow Condensed',sans-serif;font-size:2.8rem;font-weight:900;color:var(--dark);line-height:1;margin-bottom:16px">
+        <%= producto.Nombre %>
+      </h1>
+
+      <% if (producto.Tags && producto.Tags.length > 0) { %>
+        <div class="product-tags">
+          <% producto.Tags.forEach(tag => { %><span class="product-tag"><%= tag %></span><% }) %>
+        </div>
+      <% } %>
+
+      <div class="product-price-box">
+        <div class="price-label">Precio</div>
+        <div class="price-value">
+          <% if (producto.Precio === 'Consultar' || !producto.Precio) { %>
+            Consultar
+          <% } else { %>
+            U$S <%= producto.Precio %>
+          <% } %>
+        </div>
+        <small style="color:var(--muted);font-size:.8rem">* Sujeto a condiciones comerciales</small>
+      </div>
+
+      <!-- Tabs -->
+      <div class="agp-tabs" role="tablist">
+        <button class="agp-tab-btn active" role="tab" aria-selected="true"
+                onclick="showTab(event,'tab-desc')">Descripción</button>
+        <button class="agp-tab-btn" role="tab" aria-selected="false"
+                onclick="showTab(event,'tab-specs')">Ficha Técnica</button>
+      </div>
+
+      <div id="tab-desc" class="agp-tab-panel active">
+        <p style="line-height:1.8;color:var(--dark)"><%= producto.DescripcionLarga %></p>
+      </div>
+      <div id="tab-specs" class="agp-tab-panel">
+        <% if (producto.Especificaciones && Object.keys(producto.Especificaciones).length > 0) { %>
+          <table class="specs-table">
+            <tbody>
+              <% Object.entries(producto.Especificaciones).forEach(([k,v]) => { %>
+              <tr>
+                <td><%= k %></td>
+                <td><%= v %></td>
+              </tr>
+              <% }) %>
+            </tbody>
+          </table>
+        <% } else { %>
+          <p style="color:var(--muted)">Consultá las especificaciones con nuestros asesores.</p>
+        <% } %>
+      </div>
+
+      <div class="mt-4">
+        <a href="https://wa.me/5492326403502?text=Hola%20Agro%20Parallel%2C%20me%20interesa%20el%20producto%3A%20<%= encodeURIComponent(producto.Nombre) %>"
+           onclick="return gtag_report_conversion(this.href);"
+           class="agp-btn agp-btn-primary"
+           target="_blank" rel="noopener noreferrer"
+           style="font-size:1rem;padding:14px 32px">
+          <i class="fab fa-whatsapp me-2"></i> Consultar a un Especialista
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
 
 <% if (typeof productosMenu !== 'undefined') { %>
-    <%- include('./relacionados.ejs', { actual: producto.id }) %>
+  <%- include('./relacionados.ejs', { actual: producto._id || producto.id }) %>
 <% } %>
+
+<script>
+function showTab(e, id) {
+  document.querySelectorAll('.agp-tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.agp-tab-btn').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+  document.getElementById(id).classList.add('active');
+  e.currentTarget.classList.add('active');
+  e.currentTarget.setAttribute('aria-selected','true');
+}
+</script>

@@ -1,43 +1,57 @@
-<footer class="bg-dark" id="tempaltemo_footer">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 pt-5">
-        <h2 class="h2 text-success border-bottom pb-3 border-light logo">Agro Parallel</h2>
-        <ul class="list-unstyled text-light footer-link-list">
-          <li><i class="fas fa-map-marker-alt fa-fw"></i> San Antonio de Areco, BS AS</li>
-          <li><i class="fa fa-phone fa-fw"></i> <a class="text-decoration-none text-light" href="tel:+54-2326-403502">+54-2326-403502</a></li>
-          <li><i class="fa fa-envelope fa-fw"></i> <a class="text-decoration-none text-light" href="mailto:info@agroparallel.com">info@agroparallel.com</a></li>
-        </ul>
-      </div>
+<footer class="agp-footer" role="contentinfo">
+  <div class="agp-footer-inner">
 
-      <div class="col-md-4 pt-5">
-        <h2 class="h2 text-light border-bottom pb-3 border-light">Soluciones</h2>
-        <div class="row">
-          <% if (typeof productosMenu !== 'undefined') { 
-             const categorias = [...new Set(productosMenu.map(p => p.Categoria))]; 
-             categorias.forEach(cat => { %>
-              <div class="col-12 mb-2">
-                <h6 class="text-success mt-2"><%= cat %></h6>
-                <ul class="list-unstyled text-light footer-link-list">
-                  <% productosMenu.filter(p => p.Categoria === cat).forEach(prod => { %>
-                    <li><a class="text-decoration-none text-muted" href="/producto/<%= prod.id %>"><%= prod.Nombre %></a></li>
-                  <% }) %>
-                </ul>
-              </div>
-          <% })} %>
-        </div>
-      </div>
+    <!-- Columna 1: Info empresa -->
+    <div class="footer-info">
+      <div class="footer-logo">Agro<span>Parallel</span></div>
+      <p>Tecnología de precisión para el campo argentino.</p>
+      <p><span aria-hidden="true">📍</span> San Antonio de Areco, Buenos Aires</p>
+      <p><span aria-hidden="true">📞</span> <a href="tel:+5492326403502">+54 2326 403502</a></p>
+      <p><span aria-hidden="true">✉️</span> <a href="mailto:info@agroparallel.com">info@agroparallel.com</a></p>
+    </div>
 
-      <div class="col-md-4 pt-5">
-        <h2 class="h2 text-light border-bottom pb-3 border-light">Explorar</h2>
-        <ul class="list-unstyled text-light footer-link-list">
-          <li><a class="text-decoration-none" href="/">Inicio</a></li>
-          <li><a class="text-decoration-none" href="/nosotros">Sobre nosotros</a></li>
-          <li><a class="text-decoration-none" href="/productos">Catálogo de Productos</a></li>
-          <li><a class="text-decoration-none" href="/servicios">Servicios Técnicos</a></li>
-          <li><a class="text-decoration-none" href="/contacto">Contactenos</a></li>
-        </ul>
-      </div>
+    <!-- Columna 2: Soluciones por categoría -->
+    <div>
+      <h3 class="footer-heading">Soluciones</h3>
+      <% if (typeof productosMenu !== 'undefined') {
+          const cats = [...new Set(productosMenu.map(p => p.Categoria))];
+          cats.forEach(cat => { %>
+            <div class="footer-cat-label"><%= cat %></div>
+            <ul class="footer-links">
+              <% productosMenu.filter(p => p.Categoria === cat).forEach(prod => { %>
+                <li><a href="/producto/<%= prod._id || prod.id %>"><%= prod.Nombre %></a></li>
+              <% }) %>
+            </ul>
+      <% })} %>
     </div>
+
+    <!-- Columna 3: Explorar -->
+    <div>
+      <h3 class="footer-heading">Explorar</h3>
+      <ul class="footer-links">
+        <li><a href="/">Inicio</a></li>
+        <li><a href="/productos">Catálogo de Productos</a></li>
+        <li><a href="/noticias">Noticias AgTech</a></li>
+        <li><a href="/servicios">Servicios Técnicos</a></li>
+        <li><a href="/nosotros">Sobre Nosotros</a></li>
+        <li><a href="/contacto">Contáctenos</a></li>
+      </ul>
     </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <span>© <%= year %> Agro Parallel. Todos los derechos reservados.</span>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/agroparallel" target="_blank" rel="noopener" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/agro.parallel/" target="_blank" rel="noopener" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/5492326403502" target="_blank" rel="noopener" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+    </div>
+  </div>
 </footer>

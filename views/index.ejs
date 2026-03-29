@@ -1,134 +1,95 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5XQ53C5');</script>
-<!-- End Google Tag Manager -->
+<head>
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5XQ53C5');</script>
+  <!-- End Google Tag Manager -->
 
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title><%= title %></title>
-    <meta name="description" content="<%= typeof description !== 'undefined' ? description : 'Agro Parallel - Soluciones de tecnología avanzada para el agro.' %>">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="<%= typeof description !== 'undefined' ? description : 'Agro Parallel - Soluciones de tecnología avanzada para el agro.' %>">
 
-    <link rel="apple-touch-icon" href="/assets/img/apple-icon.png" />
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
-    <meta property="og:title" content="<%= title %>">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://agroparallel.com">
-    <meta property="og:image" content="/assets/img/logo_social.png">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="/assets/css/templatemo.css" />
-    <link rel="stylesheet" href="/assets/css/custom.css" />
+  <link rel="apple-touch-icon" href="/assets/img/apple-icon.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/img/favicon.ico" />
+  <meta property="og:title" content="<%= title %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://agroparallel.com">
+  <meta property="og:image" content="/assets/img/logo_social.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="<%= title %>">
+  <meta name="twitter:description" content="<%= typeof description !== 'undefined' ? description : 'Agro Parallel - Soluciones de tecnología avanzada para el agro.' %>">
+  <meta name="twitter:image" content="https://agroparallel.com/assets/img/logo_social.png">
 
-   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://agroparallel.com<%= typeof canonicalPath !== 'undefined' ? canonicalPath : '' %>">
 
-    <link rel="stylesheet" href="/assets/css/fontawesome.min.css" media="print" onload="this.media='all'">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Agro Parallel",
-  "url": "https://agroparallel.com",
-  "logo": "https://agroparallel.com/assets/img/apple-icon.png",
-  "description": "Soluciones tecnológicas para agricultura de precisión: pilotos automáticos, monitores de siembra y dosis variable.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "Petrilli 746",
-    "addressLocality": "San Antonio de Areco",
-    "addressRegion": "Buenos Aires",
-    "postalCode": "2760",
-    "addressCountry": "AR"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+54-2326-403502",
-    "contactType": "sales",
-    "areaServed": "AR",
-    "availableLanguage": "Spanish"
-  },
-  "sameAs": [
-    "https://www.facebook.com/agroparallel",
-    "https://www.instagram.com/agro.parallel"
-  ]
-}
-</script>
-<style>
-.social-widget-horizontal {
-    position: fixed !important;
-    bottom: 25px !important;
-    right: 25px !important;
-    display: flex !important;
-    flex-direction: row !important; /* Ahora van de costado */
-    align-items: center !important;
-    gap: 12px !important;
-    z-index: 999999 !important;
-}
+  <!-- Fuentes NewsX -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 
-.btn-float {
-    width: 55px !important;
-    height: 55px !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: white !important;
-    font-size: 24px !important;
-    text-decoration: none !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25) !important;
-    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-}
+  <!-- Bootstrap (grid y utilidades) -->
+  <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+  <!-- Diseño Agro Parallel -->
+  <link rel="stylesheet" href="/css/agp.css" />
+  <!-- Iconos FontAwesome -->
+  <link rel="stylesheet" href="/assets/css/fontawesome.min.css" media="print" onload="this.media='all'">
 
-/* El de WhatsApp es especial: se estira para mostrar el texto */
-.wa {
-    background-color: #25d366 !important;
-    width: auto !important;
-    padding: 0 20px !important;
-    border-radius: 30px !important;
-}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Agro Parallel",
+    "url": "https://agroparallel.com",
+    "logo": "https://agroparallel.com/assets/img/apple-icon.png",
+    "description": "Soluciones tecnológicas para agricultura de precisión: pilotos automáticos, monitores de siembra y dosis variable.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Petrilli 746",
+      "addressLocality": "San Antonio de Areco",
+      "addressRegion": "Buenos Aires",
+      "postalCode": "2760",
+      "addressCountry": "AR"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+54-2326-403502",
+      "contactType": "sales",
+      "areaServed": "AR",
+      "availableLanguage": "Spanish"
+    },
+    "sameAs": [
+      "https://www.facebook.com/agroparallel",
+      "https://www.instagram.com/agro.parallel"
+    ]
+  }
+  </script>
+</head>
 
-.wa-text {
-    font-family: 'Roboto', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    margin-left: 10px;
-}
+<body>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XQ53C5"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
 
-.fb { background-color: #1877f2 !important; }
-.ig { background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%) !important; }
+  <%- include('./partials/header.ejs') %>
 
-.btn-float:hover {
-    transform: translateY(-5px) !important;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.3) !important;
-}
-
-/* Ajuste para celulares: ocultamos el texto para que no ocupe toda la pantalla */
-@media (max-width: 480px) {
-    .wa-text { display: none; }
-    .wa { width: 55px !important; padding: 0 !important; border-radius: 50% !important; }
-    .social-widget-horizontal { bottom: 15px !important; right: 15px !important; gap: 8px !important; }
-}
-</style>
-  </head>
-
-  <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5XQ53C5"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <%- include('./partials/header.ejs') %>
-    <main>
+  <main>
     <% if (showCarousel) { %>
       <%- include('./partials/carousel.ejs') %>
     <% } %>
 
     <% if (showCategorias) { %>
       <%- include('./partials/categorias.ejs') %>
+    <% } %>
+
+    <% if (showNoticias) { %>
+      <%- include('./partials/noticias.ejs') %>
     <% } %>
 
     <% if (showProductos) { %>
@@ -154,67 +115,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <% if (showClientes) { %>
       <%- include('./partials/clientes.ejs') %>
     <% } %>
-      </main>
-    <%- include('./partials/footer.ejs') %>
+  </main>
 
-    <!-- Scripts -->
-    <script src="/assets/js/jquery-1.11.0.min.js"></script>
-    <script src="/assets/js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/js/templatemo.js"></script>
-    <script src="/assets/js/custom.js"></script>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-V6PMYBNFNH"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-17933689832');
-  gtag('config', 'G-V6PMYBNFNH');
-</script>
-    <div class="social-widget-horizontal">
-    <a href="https://www.facebook.com/agroparallel" target="_blank" class="btn-float fb" aria-label="Visitar nuestro Facebook">
-        <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://www.instagram.com/agro.parallel/" target="_blank" class="btn-float ig" aria-label="Visitar nuestro Instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info" 
-   onclick="return gtag_report_conversion('https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info');"
-   target="_blank" 
-   class="btn-float wa" 
-   aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="wa-text">¡Consultanos!</span>
-</a>
-</div>
-<a href="https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info" 
-   onclick="return gtag_report_conversion('https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info');"
-   target="_blank" 
-   class="btn-float wa" 
-   aria-label="Contactar por WhatsApp">
-    <i class="fab fa-whatsapp"></i>
-    <span class="wa-text">¡Consultanos!</span>
-</a>
+  <%- include('./partials/footer.ejs') %>
 
-<script>
-function gtag_report_conversion(url) {
-  var callback = function () {
-    if (typeof(url) != 'undefined') {
-      window.open(url, '_blank');
+  <!-- Scripts -->
+  <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Botones sociales flotantes -->
+  <div class="social-widget-horizontal">
+    <a href="https://www.facebook.com/agroparallel" target="_blank" class="btn-float fb" aria-label="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://www.instagram.com/agro.parallel/" target="_blank" class="btn-float ig" aria-label="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info"
+       onclick="return gtag_report_conversion('https://wa.me/5492326403502?text=Hola%20Agroparallel%2C%20quiero%20m%C3%A1s%20info');"
+       target="_blank" class="btn-float wa" aria-label="WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+      <span class="wa-text">¡Consultanos!</span>
+    </a>
+  </div>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V6PMYBNFNH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-17933689832');
+    gtag('config', 'G-V6PMYBNFNH');
+    function gtag_report_conversion(url) {
+      var callback = function () { if (typeof(url) != 'undefined') { window.open(url, '_blank'); } };
+      gtag('event', 'conversion', {
+        'send_to': 'AW-17933689832/5I3ZCKq7hvQbEOjHuedC',
+        'value': 1.0, 'currency': 'ARS',
+        'transaction_id': Math.floor(Math.random() * 1e9),
+        'event_callback': callback
+      });
+      return false;
     }
-  };
-    // Generamos un número aleatorio para simular un ID de transacción
-  var randomTransactionId = Math.floor(Math.random() * 1000000000);
-  gtag('event', 'conversion', {
-      'send_to': 'AW-17933689832/5I3ZCKq7hvQbEOjHuedC',
-      'value': 1.0,
-      'transaction_id': randomTransactionId,
-      'currency': 'ARS',
-      'event_callback': callback
-  });
-  return false;
-}
-</script>
-  </body>
+  </script>
+</body>
 </html>

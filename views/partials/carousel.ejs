@@ -1,65 +1,98 @@
-<div id="template-mo-zay-hero-carousel" class="carousel slide shadow-sm" data-bs-ride="carousel">
-    <ol class="carousel-indicators">
-        <% slides.forEach((slide, index) => { %>
-            <li data-bs-target="#template-mo-zay-hero-carousel" 
-                data-bs-slide-to="<%= index %>" 
-                class="<%= index === 0 ? 'active' : '' %>"></li>
-        <% }); %>
-    </ol>
-    
-    <div class="carousel-inner bg-light">
-        <% slides.forEach((slide, index) => { %>
-            <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
-                <div class="container">
-                    <div class="row p-5 align-items-center">
-                        <div class="mx-auto col-md-8 col-lg-6 order-lg-last text-center">
-                            <picture>
-                                <source srcset="/<%= slide.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
-                                <img class="img-fluid rounded" 
-                                     src="/<%= slide.Imagen %>" 
-                                     alt="Tecnología AgTech Agro Parallel: <%= slide.Nombre %>"
-                                     <% if (index === 0) { %> 
-                                        fetchpriority="high" loading="eager" 
-                                     <% } else { %> 
-                                        loading="lazy" 
-                                     <% } %>
-                                     width="800"
-                                     height="600" />
-                            </picture>
-                        </div>
-                        
-                        <div class="col-lg-6 mb-0 d-flex align-items-center">
-                            <div class="text-align-left">
-                                <% if (index === 0) { %>
-                                    <h1 class="h1 text-success fw-bold"><b><%= slide.Nombre %></b></h1>
-                                <% } else { %>
-                                    <h2 class="h1 text-success fw-bold"><b><%= slide.Nombre %></b></h2>
-                                <% } %>
-                                <h3 class="h2 text-dark"><%= slide.Categoria %></h3>
-                                <p class="lh-lg text-secondary">
-                                    <%= slide.DescripcionCorta %>
-                                </p>
-                                <div class="mt-4">
-                                    <a href="/producto/<%= slide.id %>" class="btn btn-success btn-lg px-4 shadow">
-                                        Ver Detalles del Equipo
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        <% }); %>
-    </div>
+<section class="agp-hero-section">
+  <div class="container">
+    <div id="agpHeroCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
 
-    <button class="carousel-control-prev text-decoration-none w-auto ps-3 border-0 bg-transparent" 
-            type="button" data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide="prev">
-        <i class="fas fa-chevron-left text-success h1"></i>
-        <span class="visually-hidden">Anterior</span>
-    </button>
-    <button class="carousel-control-next text-decoration-none w-auto pe-3 border-0 bg-transparent" 
-            type="button" data-bs-target="#template-mo-zay-hero-carousel" data-bs-slide="next">
-        <i class="fas fa-chevron-right text-success h1"></i>
-        <span class="visually-hidden">Siguiente</span>
-    </button>
-</div>
+      <div class="carousel-inner">
+        <% slides.forEach((slide, i) => {
+            const pid = slide._id || slide.id;
+            const emoji = slide.Emoji || '🌾';
+            const badge = slide.Badge || 'PRODUCTO DESTACADO';
+            const perks = slide.Perks || ['Instalación incluida', 'Financiación disponible', 'Garantía 12 meses'];
+        %>
+        <div class="carousel-item <%= i === 0 ? 'active' : '' %>">
+          <div class="hero-card" data-name="<%= slide.Nombre.toUpperCase() %>">
+
+            <!-- Watermark -->
+            <div class="hero-watermark" aria-hidden="true"><%= slide.Nombre.toUpperCase() %></div>
+            <!-- Branding -->
+            <div class="hero-brand-tag">AGRO <span>PARALLEL</span></div>
+
+            <div class="row align-items-center g-4">
+
+              <!-- Contenido izquierdo -->
+              <div class="col-lg-7">
+                <span class="hero-badge"><%= badge %></span>
+
+                <% if (i === 0) { %>
+                  <h1 class="hero-title"><%= slide.Categoria %> <span><%= slide.Nombre %></span></h1>
+                <% } else { %>
+                  <h2 class="hero-title"><%= slide.Categoria %> <span><%= slide.Nombre %></span></h2>
+                <% } %>
+
+                <p class="hero-desc"><%= slide.DescripcionCorta %></p>
+
+                <% if (slide.Precio && slide.Precio !== 'Consultar') { %>
+                  <div class="hero-price">USD <%= slide.Precio %></div>
+                <% } else { %>
+                  <div class="hero-price">Consultar precio</div>
+                <% } %>
+
+                <div class="hero-perks">
+                  <% perks.forEach(p => { %>
+                    <span class="hero-perk"><i class="fas fa-check" aria-hidden="true"></i> <%= p %></span>
+                  <% }) %>
+                </div>
+
+                <div class="hero-actions">
+                  <a href="/producto/<%= pid %>" class="hero-btn-primary">
+                    Ver producto →
+                  </a>
+                  <a href="https://wa.me/5492326403502?text=Hola%2C%20quiero%20info%20sobre%20el%20<%= encodeURIComponent(slide.Nombre) %>"
+                     target="_blank" rel="noopener"
+                     class="hero-btn-secondary">
+                    <i class="fab fa-whatsapp"></i> Consultar
+                  </a>
+                </div>
+              </div>
+
+              <!-- Emoji / icono derecho -->
+              <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-center">
+                <div class="hero-emoji-wrap">
+                  <span class="hero-emoji" aria-hidden="true"><%= emoji %></span>
+                  <picture>
+                    <source srcset="/<%= slide.Imagen.replace(/\.(jpg|png)$/, '.webp') %>" type="image/webp">
+                    <img src="/<%= slide.Imagen %>"
+                         alt="<%= slide.Nombre %> — <%= slide.Categoria %>"
+                         class="hero-product-img"
+                         <% if (i === 0) { %>fetchpriority="high" loading="eager" decoding="sync"<% } else { %>loading="lazy" decoding="async"<% } %>
+                         width="420" height="320">
+                  </picture>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+
+      <!-- Controles -->
+      <div class="hero-controls">
+        <button class="hero-ctrl" type="button" data-bs-target="#agpHeroCarousel" data-bs-slide="prev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="hero-indicators">
+          <% slides.forEach((slide, i) => { %>
+            <button type="button" data-bs-target="#agpHeroCarousel" data-bs-slide-to="<%= i %>"
+                    class="hero-dot <%= i === 0 ? 'active' : '' %>"
+                    aria-label="Producto <%= i+1 %>: <%= slide.Nombre %>"></button>
+          <% }); %>
+        </div>
+        <button class="hero-ctrl" type="button" data-bs-target="#agpHeroCarousel" data-bs-slide="next" aria-label="Siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</section>

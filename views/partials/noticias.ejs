@@ -1,0 +1,51 @@
+<section class="agp-section agp-news">
+  <div class="d-flex align-items-center justify-content-between mb-2">
+    <div>
+      <h2 class="section-title">Noticias <span>AgTech</span></h2>
+      <div class="section-line"></div>
+      <p class="section-subtitle">Las últimas novedades del agro y la tecnología agrícola</p>
+    </div>
+    <a href="/noticias" class="agp-btn agp-btn-outline d-none d-md-inline-block">Ver todas</a>
+  </div>
+
+  <% if (typeof noticias !== 'undefined' && noticias.length > 0) { %>
+    <div class="news-grid">
+      <% noticias.forEach(n => {
+          const titulo   = n.title || n.titulo || 'Sin título';
+          const resumen  = n.summary || n.excerpt || n.resumen || '';
+          const imagen   = n.imageUrl || n.image || n.imagen || null;
+          const fecha    = n.publishedAt || n.createdAt || n.fecha || null;
+          const cat      = n.category || n.categoria || n.source || null;
+          const slug     = n._id || n.slug || '#';
+          const fechaFmt = fecha ? new Date(fecha).toLocaleDateString('es-AR', { day:'numeric', month:'short', year:'numeric' }) : '';
+      %>
+      <article class="news-card">
+        <% if (imagen) { %>
+          <div class="news-img">
+            <img src="<%= imagen %>" alt="<%= titulo %>" loading="lazy">
+          </div>
+        <% } %>
+        <div class="news-body">
+          <div class="news-meta">
+            <% if (cat) { %><span class="news-cat"><%= cat %></span><% } %>
+            <% if (fechaFmt) { %><span>· <%= fechaFmt %></span><% } %>
+          </div>
+          <a href="/noticias/<%= slug %>" class="news-title"><%= titulo %></a>
+          <% if (resumen) { %>
+            <p class="news-excerpt"><%= resumen.substring(0, 140) %><%= resumen.length > 140 ? '…' : '' %></p>
+          <% } %>
+        </div>
+      </article>
+      <% }) %>
+    </div>
+
+    <div class="text-center mt-4 d-md-none">
+      <a href="/noticias" class="agp-btn agp-btn-outline">Ver todas las noticias</a>
+    </div>
+
+  <% } else { %>
+    <div style="text-align:center; padding:48px 0; color:var(--muted)">
+      <p style="font-size:1rem">No hay noticias disponibles en este momento.</p>
+    </div>
+  <% } %>
+</section>

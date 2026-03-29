@@ -1,43 +1,49 @@
-<nav class="navbar navbar-expand-lg navbar-light shadow">
-  <div class="container d-flex justify-content-between align-items-center">
-    <a class="navbar-brand text-success logo h1 align-self-center" href="/">Agro Parallel</a>
-    
-    <button 
-      class="navbar-toggler border-0" 
-      type="button" 
-      data-bs-toggle="collapse" 
-      data-bs-target="#agroparallel_main_nav"
-      aria-label="Abrir menú de navegación"
-    >
-      <span class="navbar-toggler-icon"></span>
+<nav class="agp-nav" role="navigation" aria-label="Navegación principal">
+  <div class="agp-nav-inner">
+    <a href="/" class="agp-logo">Agro<span>Parallel</span></a>
+
+    <button class="agp-nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
     </button>
 
-    <div class="align-self-center collapse navbar-collapse flex-fill d-lg-flex justify-content-lg-between" id="agroparallel_main_nav">
-      <div class="flex-fill">
-        <ul class="nav navbar-nav d-flex justify-content-between mx-lg-auto">
-          <li class="nav-item"><a class="nav-link" href="/">Inicio</a></li>
-          
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">Productos</a>
-            <ul class="dropdown-menu shadow border-0">
-              <li><a class="dropdown-item fw-bold text-success" href="/productos">Ver Todo el Catálogo</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <% if (typeof productosMenu !== 'undefined') { 
-                  const categorias = [...new Set(productosMenu.map(p => p.Categoria))];
-                  categorias.forEach(cat => { %>
-                    <li class="dropdown-header text-uppercase small text-muted"><%= cat %></li>
-                    <% productosMenu.filter(p => p.Categoria === cat).forEach(prod => { %>
-                      <li><a class="dropdown-item" href="/producto/<%= prod.id %>"><%= prod.Nombre %></a></li>
-                    <% }) %>
-              <% })} %>
-            </ul>
-          </li>
+    <ul class="agp-nav-links" id="navLinks" role="list">
+      <li><a href="/">Inicio</a></li>
 
-          <li class="nav-item"><a class="nav-link" href="/servicios">Servicios</a></li>
-          <li class="nav-item"><a class="nav-link" href="/nosotros">Nosotros</a></li>
-          <li class="nav-item"><a class="nav-link" href="/contacto">Contacto</a></li>
-        </ul>
-      </div>
-    </div>
+      <li class="agp-dropdown">
+        <a href="/productos" aria-haspopup="true">Productos ▾</a>
+        <div class="agp-dropdown-menu" role="menu">
+          <div class="agp-dropdown-menu-inner">
+            <a href="/productos" class="agp-dropdown-all">Ver todo el catálogo</a>
+            <div class="agp-dropdown-divider"></div>
+            <% if (typeof productosMenu !== 'undefined') {
+                const cats = [...new Set(productosMenu.map(p => p.Categoria))];
+                cats.forEach(cat => { %>
+                  <div class="agp-dropdown-header"><%= cat %></div>
+                  <% productosMenu.filter(p => p.Categoria === cat).forEach(prod => { %>
+                    <a href="/producto/<%= prod._id || prod.id %>" role="menuitem"><%= prod.Nombre %></a>
+                  <% }) %>
+            <% })} %>
+          </div>
+        </div>
+      </li>
+
+      <li><a href="/noticias">Noticias</a></li>
+      <li><a href="/servicios">Servicios</a></li>
+      <li><a href="/nosotros">Nosotros</a></li>
+      <li><a href="/contacto">Contacto</a></li>
+    </ul>
   </div>
 </nav>
+
+<script>
+(function() {
+  var btn = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (btn && links) {
+    btn.addEventListener('click', function() {
+      var open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>

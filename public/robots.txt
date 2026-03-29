@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Bloquear panel de administración
+Disallow: /admin/
+Disallow: /admin
+
+# Sitemap
+Sitemap: https://agroparallel.com/sitemap.xml

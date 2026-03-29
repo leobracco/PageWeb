@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin · Productos — Agro Parallel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;900&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+
+  <aside class="admin-sidebar">
+    <div class="sidebar-logo">Agro<span>Parallel</span></div>
+    <nav class="sidebar-nav">
+      <a href="/admin" class="sidebar-link active">📦 Productos</a>
+      <a href="/" class="sidebar-link" target="_blank">🌐 Ver Sitio</a>
+      <a href="/admin/logout" class="sidebar-link sidebar-logout">⬅ Salir</a>
+    </nav>
+  </aside>
+
+  <main class="admin-main">
+    <header class="admin-topbar">
+      <h1 class="admin-page-title">Gestión de Productos</h1>
+      <a href="/admin/productos/nuevo" class="btn-admin-primary">+ Nuevo Producto</a>
+    </header>
+
+    <% if (flash) { %>
+      <div class="admin-alert admin-alert-<%= flash.type %>"><%= flash.msg %></div>
+    <% } %>
+
+    <div class="admin-card">
+      <% if (productos.length === 0) { %>
+        <p class="text-muted text-center" style="padding:40px">No hay productos cargados.</p>
+      <% } else { %>
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Categoría</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% productos.forEach(p => { %>
+          <tr>
+            <td><code><%= p._id || p.id %></code></td>
+            <td><strong><%= p.Nombre %></strong></td>
+            <td><span class="tag-green"><%= p.Categoria %></span></td>
+            <td><%= p.Precio %></td>
+            <td class="actions-cell">
+              <a href="/admin/productos/<%= p._id || p.id %>/editar" class="btn-admin-sm">Editar</a>
+              <form method="POST" action="/admin/productos/<%= p._id || p.id %>/eliminar" style="display:inline" onsubmit="return confirm('¿Eliminar <%= p.Nombre %>?')">
+                <button type="submit" class="btn-admin-sm btn-admin-danger">Eliminar</button>
+              </form>
+              <a href="/producto/<%= p._id || p.id %>" target="_blank" class="btn-admin-sm btn-admin-ghost">Ver</a>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } %>
+    </div>
+  </main>
+
+</body>
+</html>

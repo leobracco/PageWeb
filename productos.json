@@ -3,149 +3,177 @@
     "id": "AGP-AU-RTK",
     "Nombre": "Centrix",
     "Categoria": "Piloto Automático",
+    "Badge": "PRECISIÓN MÁXIMA",
+    "Emoji": "🛰️",
     "Precio": "8.920 + IVA",
     "Imagen": "assets/img/agp_au_rtk.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["RTK", "Precisión 2cm", "Máxima Precisión"],
-    "DescripcionCorta": "Piloto automático con señal RTK para precisión centimétrica constante.",
-    "DescripcionLarga": "Centrix representa la élite en navegación agrícola. Gracias a su señal RTK, ofrece una precisión de 2 cm pasada tras pasada, eliminando solapamientos y optimizando el uso de combustible. Ideal para siembra de precisión y tareas que requieren rigurosidad absoluta.",
+    "Video": "",
+    "Tags": ["RTK 2cm", "Sin Solapamiento", "Señal Propia"],
+    "Perks": ["Instalación incluida", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Precisión centimétrica de 2 cm pasada a pasada. Elimina solapamientos, cuida cada litro de combustible y maximiza el rendimiento de cada hectárea.",
+    "DescripcionLarga": "Centrix es el piloto automático de gama alta de Agro Parallel. Opera con señal RTK propia, alcanzando una precisión constante de 2 cm sin importar la velocidad de trabajo ni las condiciones del campo. Campaña tras campaña, las pasadas quedan exactamente donde tienen que estar: sin solapamientos que desperdicien insumos ni espacios sin cubrir que afecten el rinde. Incluye pantalla táctil HD de 12.1 pulgadas, motor eléctrico de alto torque y compatibilidad universal con cualquier marca y modelo de tractor. La instalación se realiza en el lote en el mismo día, con capacitación al operador incluida.",
     "Especificaciones": {
       "Precisión": "2 cm (RTK)",
       "Motor": "Eléctrico de alto torque",
-      "Pantalla": "12.1 pulgadas táctil HD",
+      "Pantalla": "12.1\" táctil HD",
       "Voltaje": "12V / 24V",
-      "Compatibilidad": "Universal"
+      "Compatibilidad": "Universal — todas las marcas",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "Piloto Automático Centrix | Precisión RTK 2cm | Agro Parallel",
-      "MetaDescription": "Descubrí Centrix, el piloto automático con precisión centimétrica RTK. Maximizá la eficiencia de tu campo con tecnología Agro Parallel."
+      "Title": "Piloto Automático Centrix RTK 2cm | Agro Parallel — Argentina",
+      "MetaDescription": "Centrix: piloto automático con señal RTK y precisión de 2 cm. Eliminá solapamientos y maximizá el rinde de tu campo. Instalación en el día. Agro Parallel, San Antonio de Areco."
     }
   },
   {
     "id": "AGP-AU-LIBRE",
     "Nombre": "SPARK",
     "Categoria": "Piloto Automático",
+    "Badge": "MÁS VENDIDO",
+    "Emoji": "⚡",
     "Precio": "7.920 + IVA",
     "Imagen": "assets/img/agp_au_libre.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Señal Libre", "Fácil Instalación", "Eficiencia"],
-    "DescripcionCorta": "Precisión de 15 cm con señal libre, ideal para pulverización y fertilización.",
-    "DescripcionLarga": "SPARK es la solución perfecta para productores que buscan dar el salto a la automatización sin suscripciones. Ofrece una precisión de 15 cm, ideal para tareas de pulverización, fertilización y laboreo general, reduciendo la fatiga del operador.",
+    "Video": "",
+    "Tags": ["Sin Abono Mensual", "Señal Libre", "Fácil Instalación"],
+    "Perks": ["Sin suscripción mensual", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Sistema eléctrico con señal libre. Instalación simple en tractores, pulverizadoras y cosechadoras de todas las marcas. Sin costos mensuales.",
+    "DescripcionLarga": "SPARK es el piloto automático más elegido por productores y contratistas que buscan dar el salto a la automatización sin complicaciones ni suscripciones. Con una precisión de 15 cm sobre señal libre, es ideal para pulverización, fertilización y laboreo general. No requiere base RTK propia ni abonos mensuales: enchufás, calibrás y salís a trabajar. Reduce la fatiga del operador al mínimo, mejora la velocidad de trabajo y paga su inversión en la primera campaña.",
     "Especificaciones": {
       "Precisión": "15 cm (Señal Libre)",
-      "Instalación": "8 hs",
+      "Instalación": "8 horas en campo",
       "Interfaz": "Sencilla e intuitiva",
       "Voltaje": "12V / 24V",
-      "Compatibilidad": "Universal"
+      "Compatibilidad": "Universal — todas las marcas",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "Piloto Automático SPARK | Señal Libre | Agro Parallel",
-      "MetaDescription": "SPARK ofrece automatización sin límites. Piloto automático con señal libre para optimizar tus tareas agrícolas sin costos mensuales."
+      "Title": "Piloto Automático SPARK | Sin Suscripción | Agro Parallel — Argentina",
+      "MetaDescription": "SPARK: piloto automático con señal libre, sin abono mensual. Precisión de 15 cm, instalación en 8 horas. El más vendido de Agro Parallel. San Antonio de Areco."
     }
   },
   {
     "id": "AGP-VR",
     "Nombre": "Quantix",
     "Categoria": "Dosis Variable",
+    "Badge": "AHORRÁ INSUMOS",
+    "Emoji": "💧",
     "Precio": "Consultar",
     "Imagen": "assets/img/agp_vr.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Dosis Variable", "Prescripciones", "Optimización"],
-    "DescripcionCorta": "Control inteligente para la aplicación precisa de insumos según mapas de rendimiento.",
-    "DescripcionLarga": "Quantix permite aplicar la cantidad exacta de insumo donde el suelo lo necesita. Mediante mapas de prescripción, el sistema ajusta la dosis en tiempo real, maximizando el potencial de rinde y ahorrando costos significativos en fertilizantes y semillas.",
+    "Video": "",
+    "Tags": ["Dosis Variable", "Mapas de Prescripción", "Ahorro en Insumos"],
+    "Perks": ["Compatible con Shapefiles", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Aplicá exactamente lo que cada zona del lote necesita. Conectá tus mapas de prescripción y reducí el gasto en fertilizantes y semillas desde la primera campaña.",
+    "DescripcionLarga": "Quantix transforma tus mapas de ambientes en acciones concretas: aplica la dosis exacta de fertilizante o semilla en cada zona del lote, en tiempo real. Integra con archivos Shapefiles generados por cualquier plataforma agronómica y controla tanto motores hidráulicos como eléctricos. El sistema registra los mapas de aplicación real para que puedas auditar y mejorar cada campaña. Productores que usan Quantix reportan ahorros de entre el 8% y el 18% en insumos sin perder rinde.",
     "Especificaciones": {
       "Control": "Hidráulico o Eléctrico",
-      "Mapas": "Soporte para Shapefiles (.shp)",
-      "Precisión": "Ajuste instantáneo de flujo",
-      "Registro": "Mapas de aplicación real"
+      "Mapas": "Shapefiles (.shp) — todos los formatos",
+      "Ajuste": "Instantáneo en tiempo real",
+      "Registro": "Mapas de aplicación exportables",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "Quantix: Control de Dosis Variable | Agro Parallel",
-      "MetaDescription": "Optimizá tus recursos con Quantix. Aplicación de dosis variable inteligente para una agricultura más eficiente y rentable."
+      "Title": "Quantix — Control de Dosis Variable para el Campo | Agro Parallel",
+      "MetaDescription": "Quantix aplica la dosis exacta de fertilizante en cada zona de tu lote. Ahorrá hasta 18% en insumos con mapas de prescripción. Agro Parallel, Argentina."
     }
   },
   {
     "id": "AGP-SXS",
     "Nombre": "LineX",
     "Categoria": "Control de Siembra",
+    "Badge": "CERO SOLAPAMIENTO",
+    "Emoji": "🌾",
     "Precio": "Consultar",
     "Imagen": "assets/img/agp_sxs.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Surco por Surco", "Corte Eléctrico", "Ahorro Semilla"],
-    "DescripcionCorta": "Corte surco por surco para sembradoras neumáticas. Cero solapamiento.",
-    "DescripcionLarga": "LineX es el aliado definitivo para la siembra moderna. Evita el solapamiento en cabeceras y zonas irregulares cortando cada surco de forma individual. Reducí el gasto de semilla entre un 5% y un 12% desde la primera campaña.",
+    "Video": "",
+    "Tags": ["Surco por Surco", "Corte Eléctrico", "Hasta 12% Ahorro Semilla"],
+    "Perks": ["Recupero en 1 campaña", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Cortá surco por surco y recuperá hasta un 12% en semillas desde la primera campaña. Cero solapamiento en cabeceras y zonas irregulares.",
+    "DescripcionLarga": "LineX lleva el control de siembra al siguiente nivel: cada surco se activa o desactiva de forma individual, eliminando por completo el solapamiento en cabeceras, bordos y zonas ya sembradas. Compatible con sembradoras neumáticas de cualquier marca, sus actuadores eléctricos de alta velocidad responden en milisegundos a la señal GPS. El ahorro promedio en semillas es del 8 al 12%, lo que en la mayoría de los campos significa que el sistema se paga solo en la primera campaña.",
     "Especificaciones": {
-      "Tipo de Corte": "Surco por Surco Individual",
+      "Tipo de Corte": "Individual por surco",
       "Actuadores": "Eléctricos de alta velocidad",
-      "Ahorro": "Promedio 8-10% en semillas",
-      "Instalación": "Adaptable a todas las marcas"
+      "Ahorro en Semilla": "8–12% promedio",
+      "Compatibilidad": "Todas las sembradoras neumáticas",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "LineX | Corte Surco por Surco para Sembradoras | Agro Parallel",
-      "MetaDescription": "Eliminá el solapamiento con LineX. Tecnología de corte surco por surco para ahorrar semillas y mejorar el rinde."
+      "Title": "LineX — Corte Surco por Surco para Sembradoras | Agro Parallel",
+      "MetaDescription": "LineX elimina el solapamiento en siembra surco por surco. Ahorrá hasta 12% en semillas desde la primera campaña. Compatible con todas las marcas. Agro Parallel."
     }
   },
   {
     "id": "AGP-CS",
     "Nombre": "SectorX",
     "Categoria": "Control de Siembra",
+    "Badge": "PRODUCTO DESTACADO",
+    "Emoji": "🗺️",
     "Precio": "Consultar",
     "Imagen": "assets/img/agp_cs.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Corte por Sección", "Eficiencia", "Adaptabilidad"],
-    "DescripcionCorta": "Corte automático por secciones para minimizar el solapamiento.",
-    "DescripcionLarga": "SectorX optimiza la siembra en lotes irregulares mediante el corte automático de secciones. Es la solución ideal para actualizar sembradoras existentes, logrando un ahorro sustancial de insumos con una inversión inteligente.",
+    "Video": "",
+    "Tags": ["Corte por Sección", "GPS Automático", "Adaptable"],
+    "Perks": ["Sin cambiar tu sembradora", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Apagá secciones automáticamente en cabeceras y zonas ya sembradas. Ahorrá insumos sin cambiar tu máquina ni alterar tu operativa.",
+    "DescripcionLarga": "SectorX es la solución para productores que quieren reducir el solapamiento en su sembradora actual sin hacer una inversión grande. El sistema detecta por GPS las zonas ya sembradas y apaga secciones completas de forma automática, evitando doble siembra en cabeceras y zonas irregulares. Funciona con motores mecánicos y neumáticos, y el control integrado en pantalla permite operar en modo automático o manual según el lote. Ideal como primer paso hacia la agricultura de precisión.",
     "Especificaciones": {
-      "Modos": "Automático por GPS o Manual",
-      "Secciones": "Configurable según la máquina",
+      "Modos": "Automático GPS y Manual",
+      "Secciones": "Configurable según máquina",
       "Compatibilidad": "Motores mecánicos y neumáticos",
-      "Interfaz": "Control integrado en pantalla"
+      "Interfaz": "Pantalla integrada en cabina",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "SectorX | Corte por Sección Automático | Agro Parallel",
-      "MetaDescription": "Ahorrá insumos con SectorX. Sistema de corte por sección preciso y adaptable a cualquier sembradora."
+      "Title": "SectorX — Corte por Sección Automático para Sembradoras | Agro Parallel",
+      "MetaDescription": "SectorX apaga secciones automáticamente y elimina el doble sembrado. Ahorrá insumos sin cambiar tu sembradora. Instalación en campo. Agro Parallel."
     }
   },
   {
     "id": "AGP-RTK",
     "Nombre": "Atlas RTK",
     "Categoria": "Base RTK",
+    "Badge": "COBERTURA 30 KM",
+    "Emoji": "📡",
     "Precio": "2.530 + IVA",
     "Imagen": "assets/img/agp_rtk.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Base Fija", "Referencia", "Estabilidad"],
-    "DescripcionCorta": "Base de corrección para lograr precisión centimétrica en toda la flota.",
-    "DescripcionLarga": "Atlas RTK es la columna vertebral de la precisión en el campo. Proporciona la señal de corrección necesaria para que sus equipos Centrix operen con una exactitud de 2 cm, garantizando repetibilidad año tras año.",
+    "Video": "",
+    "Tags": ["Base Fija", "Hasta 30 km", "IP67 Exterior"],
+    "Perks": ["1 base para toda la flota", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "La base fija que le da al Centrix sus 2 cm de precisión. Una sola unidad cubre hasta 30 km de radio para toda tu flota de tractores.",
+    "DescripcionLarga": "Atlas RTK es la estación base que transforma a Centrix en el piloto más preciso del mercado. Instalada en un punto fijo del establecimiento, emite la señal de corrección diferencial que permite alcanzar los 2 cm de exactitud en cualquier punto del campo a hasta 30 km de distancia. Preparada para exterior con protección IP67, opera con señal multiconstelación (GPS + GLONASS) y se conecta vía radio UHF o Internet (NTRIP). Una sola unidad es suficiente para cubrir la flota completa de equipos.",
     "Especificaciones": {
-      "Rango": "Hasta 20-30 km",
-      "Señal": "Multiconstelación (GPS, GLONASS)",
-      "Resistencia": "Protección IP67 para exterior",
-      "Conectividad": "Radio UHF / Internet (NTRIP)"
+      "Cobertura": "Hasta 30 km de radio",
+      "Señal": "GPS + GLONASS (Multiconstelación)",
+      "Resistencia": "IP67 — exterior permanente",
+      "Conectividad": "Radio UHF / NTRIP (Internet)",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "Atlas RTK | Estación Base de Corrección | Agro Parallel",
-      "MetaDescription": "Atlas RTK brinda la señal de referencia necesaria para la máxima precisión centimétrica en tus labores agrícolas."
+      "Title": "Atlas RTK — Estación Base de Corrección | Agro Parallel Argentina",
+      "MetaDescription": "Atlas RTK: base de corrección diferencial para precisión de 2 cm en toda tu flota. Cobertura de 30 km, IP67, sin abono mensual. Agro Parallel."
     }
   },
   {
     "id": "AGP-MONITOR",
     "Nombre": "VistaX",
     "Categoria": "Monitor de Siembra",
+    "Badge": "CONTROL TOTAL",
+    "Emoji": "👁️",
     "Precio": "Consultar",
     "Imagen": "assets/img/agp_sxs.webp",
-    "Video": "https://www.youtube.com/embed/ejemplo",
-    "Tags": ["Monitoreo", "Sensores", "Control Total"],
-    "DescripcionCorta": "Supervisión en tiempo real de la caída de semilla y fertilizante.",
-    "DescripcionLarga": "VistaX le permite ver lo que sucede debajo de la tierra. Con sensores de alta precisión, monitorea cada bajada de la sembradora, alertando instantáneamente ante fallas, tubos tapados o falta de insumos, asegurando una implantación perfecta.",
+    "Video": "",
+    "Tags": ["Tiempo Real", "Alarmas Instantáneas", "Sensores Infrarrojos"],
+    "Perks": ["Alerta ante cada falla", "Financiación disponible", "Garantía 12 meses"],
+    "DescripcionCorta": "Controlá en tiempo real la caída de semilla y fertilizante en cada surco. Alarmas instantáneas ante tapones, fallas de sensor o falta de insumo.",
+    "DescripcionLarga": "VistaX es el sistema de monitoreo de siembra más completo de Agro Parallel. Sus sensores infrarrojos de alta sensibilidad supervisan la caída individual de cada semilla y cada dosis de fertilizante por surco, alertando al instante ante cualquier anomalía: tubo tapado, falla de sensor, semilla doble o falta de insumo. La pantalla a color con alarmas visuales y sonoras permite al operador actuar de inmediato sin detener la labor. Registra hectáreas parciales y totales, velocidad de avance y eficiencia de siembra en tiempo real.",
     "Especificaciones": {
       "Sensores": "Infrarrojos de alta sensibilidad",
-      "Pantalla": "Color con alarmas visuales/sonoras",
-      "Funciones": "Hectáreas parciales/totales, Velocidad",
-      "Escalabilidad": "Compatible con sensores de fertilizante"
+      "Pantalla": "Color — alarmas visuales y sonoras",
+      "Registro": "Hectáreas parciales/totales, velocidad",
+      "Escalabilidad": "Sensores de fertilizante opcionales",
+      "Garantía": "12 meses"
     },
     "SEO": {
-      "Title": "VistaX | Monitor de Siembra Avanzado | Agro Parallel",
-      "MetaDescription": "No siembres a ciegas. VistaX es el monitor de siembra que te garantiza control total sobre la caída de cada semilla."
+      "Title": "VistaX — Monitor de Siembra en Tiempo Real | Agro Parallel",
+      "MetaDescription": "VistaX monitorea cada surco en tiempo real con alarmas instantáneas. No siembres con fallas sin darte cuenta. Sensores infrarrojos. Agro Parallel, Argentina."
     }
   }
 ]
